@@ -43,8 +43,8 @@
     <delete id="deleteinfo">
         delete from esp_oldmaninfo where oldman_serialnumber = #{oldmanSerialnumber}
     </delete>
-    <!--添加一条老人信息-->
-    <insert id="insertinfo" keyProperty="oldmanId" useGeneratedKeys="true">/*id值返回给原来要插入的对象里*/
+    <!--添加一条老人信息keyProperty="oldmanId" useGeneratedKeys="true"-->
+    <insert id="insertinfo" >/*id值返回给原来要插入的对象里*/
         insert into esp_oldmaninfo(oldman_serialnumber, oldman_idnumber, oldman_name, oldman_sex,oldman_height,oldman_age,oldman_checkintime,oldman_roomnumber,caregiver_empno)
         values (#{oldmanSerialnumber}, #{oldmanIdnumber}, #{oldmanName}, #{oldmanSex}, #{oldmanHeight}, #{oldmanAge}, #{oldmanCheckintime}, #{oldmanRoomnumber},#{caregiverinfo.caregiverEmpno})
     </insert>

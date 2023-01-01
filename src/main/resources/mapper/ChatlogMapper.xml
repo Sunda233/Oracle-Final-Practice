@@ -62,8 +62,8 @@
         where chatlog_id = #{id}
     </update>
 
-    <!--添加一条数据-->
-    <insert id="insertinfo" keyProperty="chatlogId" useGeneratedKeys="true">/*id值返回给原来要插入的对象里*/
+    <!--添加一条数据keyProperty="chatlogId" useGeneratedKeys="true"-->
+    <insert id="insertinfo">/*id值返回给原来要插入的对象里*/
         insert into esp_chatlog(relatives_serialnumber, caregiver_empno, chatlog_senddate, chatlog_sendtime,chatlog_sendcontent,chatlog_remark,chatlog_source,chatlog_state)
         values (#{relativesinfo.relativesSerialnumber}, #{caregiverinfo.caregiverEmpno}, #{chatlogSenddate}, #{chatlogSendtime}, #{chatlogSendcontent}, #{chatlogRemark}, #{chatlogSource}, #{chatlogState})
     </insert>

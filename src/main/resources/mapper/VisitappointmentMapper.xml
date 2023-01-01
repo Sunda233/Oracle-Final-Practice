@@ -72,8 +72,8 @@
         where visitappointment_id = #{visitappointmentId}
     </update>
 
-    <!--添加新信息-->
-    <insert id="insertinfo" keyProperty="visitappointmentId" useGeneratedKeys="true">/*id值返回给原来要插入的对象里*/
+    <!--添加新信息keyProperty="visitappointmentId" useGeneratedKeys="true"-->
+    <insert id="insertinfo" >/*id值返回给原来要插入的对象里*/
         insert into esp_visitappointment(relatives_serialnumber, oldman_serialnumber, visitappointment_date, visitappointment_createdate,visitappointment_remark,visitappointment_state)
         values (#{relativesinfo.relativesSerialnumber}, #{oldmaninfo.oldmanSerialnumber}, #{visitappointmentDate}, #{visitappointmentCreatedate}, #{visitappointmentRemark}, #{visitappointmentState})
     </insert>

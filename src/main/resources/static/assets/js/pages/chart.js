@@ -33,7 +33,6 @@ $(document).ready(function() {
 
 
 
-
     var nvddata1 = function() {
         var sin = [],
         cos = [];

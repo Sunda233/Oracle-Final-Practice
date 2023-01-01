@@ -56,8 +56,8 @@
         delete from esp_relativesoldmanrelative where ror_id = #{no}
     </delete>
 
-    <!--添加一个新信息-->
-    <insert id="insertinfo" keyProperty="rorId" useGeneratedKeys="true">/*id值返回给原来要插入的对象里*/
+    <!--添加一个新信息keyProperty="rorId" useGeneratedKeys="true"-->
+    <insert id="insertinfo" >/*id值返回给原来要插入的对象里*/
         insert into esp_relativesoldmanrelative(oldman_serialnumber, relatives_serialnumber,relatives_relative)
         values (#{oldmaninfo.oldmanSerialnumber}, #{relativesinfo.relativesSerialnumber}, #{relativesrelative})
     </insert>

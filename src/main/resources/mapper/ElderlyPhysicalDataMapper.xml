@@ -104,7 +104,7 @@
         where physicaldata_id = #{physicaldataId}
     </update>
     <!--添加一条信息-->
-    <insert id="insertinfo" keyProperty="physicaldataId" useGeneratedKeys="true">/*id值返回给原来要插入的对象里*/
+    <insert id="insertinfo">/*id值返回给原来要插入的对象里*/
         insert into esp_elderlyphysicaldata(oldman_serialnumber, physicaldata_bloodpressurelow,physicaldata_bloodpressurehigh, physicaldata_weight, physicaldata_diet,physicaldata_date,physicaldata_remark)
         values (#{oldmanInfo.oldmanSerialnumber}, #{physicaldataBloodpressurelow}, #{physicaldataBloodpressurehigh}, #{physicaldataWeight}, #{physicaldataDiet}, #{physicaldataDate}, #{physicaldataRemark})
     </insert>

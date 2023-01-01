@@ -46,8 +46,8 @@
         where esp_caregivergroup.caregiver_empno=esp_caregiverinfo.caregiver_empno
     </select>
 
-    <!--分配看护人员进组-->
-    <insert id="insertinfo" keyProperty="caregiverGroupid" useGeneratedKeys="true">/*id值返回给原来要插入的对象里*/
+    <!--分配看护人员进组 keyProperty="caregiverGroupid" useGeneratedKeys="true"-->
+    <insert id="insertinfo">/*id值返回给原来要插入的对象里*/
         insert into esp_caregivergroup(group_id, caregiver_empno)
         values (#{groupId}, #{caregiverinfo.caregiverEmpno})
     </insert>
@@ -85,7 +85,7 @@
 
     <!--左外连接，查询所有未分组的人员，且不是看护组长-->
     <select id="getSomeInfoByUnGroup" resultMap="caregivergroupMap">
-      SELECT * from `esp_caregiverinfo` as caregiver LEFT JOIN `esp_caregivergroup` as groupp ON caregiver.caregiver_empno= groupp.caregiver_empno
+      SELECT * from esp_caregiverinfo caregiver LEFT JOIN esp_caregivergroup groupp ON caregiver.caregiver_empno= groupp.caregiver_empno
       where group_id is null and caregiver.caregiver_empno not in (SELECT caregiver_empno from esp_caregiverleaderinfo)
 </select>
 

@@ -61,8 +61,8 @@
         from esp_caregiverleaderinfo,esp_caregiverinfo
         where esp_caregiverleaderinfo.caregiver_empno=esp_caregiverinfo.caregiver_empno and esp_caregiverleaderinfo.caregiver_empno = #{username} and careLeaderInfo_password= #{password}
     </select>
-    <!--添加亲属账号信息-->
-    <insert id="insert" keyProperty="relativesId" useGeneratedKeys="true">/*id值返回给原来要插入的对象里*/
+    <!--添加亲属账号信息keyProperty="relativesId" useGeneratedKeys="true"-->
+    <insert id="insert" >/*id值返回给原来要插入的对象里*/
         insert into esp_relativesinfo(relatives_serialnumber, relatives_name, relatives_phone,relatives_password)
         values (#{relativesSerialnumber}, #{relativesName}, #{relativesPhone}, #{relativesPassword})
     </insert>

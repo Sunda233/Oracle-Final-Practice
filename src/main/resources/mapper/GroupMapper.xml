@@ -41,8 +41,8 @@
     </select>
 
 
-    <!--添加一个新分组-->
-    <insert id="insertinfo" keyProperty="groupId" useGeneratedKeys="true">/*id值返回给原来要插入的对象里*/
+    <!--添加一个新分组keyProperty="groupId" useGeneratedKeys="true"-->
+    <insert id="insertinfo" >/*id值返回给原来要插入的对象里*/
         insert into esp_groupInfo(group_name, caregiver_empno)
         values (#{groupName}, #{caregiverinfo.caregiverEmpno})
     </insert>

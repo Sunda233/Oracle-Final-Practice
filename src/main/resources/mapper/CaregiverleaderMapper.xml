@@ -29,8 +29,8 @@
     <delete id="deleteinfocaregiverleader">
         delete from esp_caregiverleaderinfo where caregiver_empno = #{no}
     </delete>
-    <!--添加看护组长信息-->
-    <insert id="insertinfocaregiverleader" keyProperty="careleaderinfoid" useGeneratedKeys="true">/*id值返回给原来要插入的对象里*/
+    <!--添加看护组长信息keyProperty="careleaderinfoid" useGeneratedKeys="true"-->
+    <insert id="insertinfocaregiverleader" >/*id值返回给原来要插入的对象里*/
         insert into esp_caregiverleaderinfo(caregiver_empno, careleaderinfo_password)
         values (#{caregiverinfo.caregiverEmpno}, #{careLeaderInfoPassword})
     </insert>
