@@ -151,12 +151,11 @@ public class RelativesController {
         //通过身份证查询老人信息
         olaman= oldmanService.getOneInfoByIdN(oldmanIdnumber);
         System.out.println("查询值测试老人"+ olaman);
-        if(olaman.getOldmanId().equals(null)){
+        if(olaman == null){
             rspMessage.setMessage("数据库查无此人，请检查输入！");
             rspMessage.setMsgCode("2005");
             return rspMessage;
         }
-
         //填充信息
         info.setOldmaninfo(olaman);
         info.setRelativesinfo(relative);
@@ -165,9 +164,6 @@ public class RelativesController {
         //查询数据库中是否已经有此条信息
         List<EspRelativesoldmanrelative> haveinfo = relativesoldmanrelativeService.getSomeInfo(no,olaman.getOldmanSerialnumber());
         System.out.println("查询值测试"+haveinfo);
-
-
-
         if (haveinfo.size()==0){//如果没有数据
             //执行添加操作
             boolean bool= relativesoldmanrelativeService .insertinfo(info);
