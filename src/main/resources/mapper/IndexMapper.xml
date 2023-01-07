@@ -62,8 +62,38 @@
         where esp_caregiverleaderinfo.caregiver_empno=esp_caregiverinfo.caregiver_empno and esp_caregiverleaderinfo.caregiver_empno = #{username} and careLeaderInfo_password= #{password}
     </select>
     <!--添加亲属账号信息keyProperty="relativesId" useGeneratedKeys="true"-->
-    <insert id="insert" >/*id值返回给原来要插入的对象里*/
+    <!--<insert id="insert" >/*id值返回给原来要插入的对象里*/
         insert into esp_relativesinfo(relatives_serialnumber, relatives_name, relatives_phone,relatives_password)
         values (#{relativesSerialnumber}, #{relativesName}, #{relativesPhone}, #{relativesPassword})
+    </insert>-->
+
+    <!--通过statementType="CALLABLE"指定存储过程调用，通过mode=IN指定入参，通过mode=OUT指定返回值-->
+    <insert id="insert" statementType="CALLABLE">/*id值返回给原来要插入的对象里*/
+            {
+            CALL insert_relatives(
+            #{relativesId,mode=IN,jdbcType=VARCHAR},
+            #{relativesSerialnumber,mode=IN,jdbcType=VARCHAR},
+            #{relativesName,mode=IN,jdbcType=VARCHAR},
+            #{relativesPhone,mode=IN,jdbcType=VARCHAR},
+            #{relativesPassword,mode=IN,jdbcType=VARCHAR}
+            )
+            }
     </insert>
+
+   <!-- insert into esp_relativesinfo(relatives_serialnumber, relatives_name, relatives_phone,relatives_password)
+    values (#{relativesSerialnumber}, #{relativesName}, #{relativesPhone}, #{relativesPassword})-->
+ <!--   #{param3,mode=OUT,jdbcType=INTEGER
+    <result property="relativesId" column="relatives_id" jdbcType="INTEGER"/>
+    <result property="relativesSerialnumber" column="relatives_serialnumber" jdbcType="VARCHAR"/>
+    <result property="relativesName" column="relatives_name" jdbcType="VARCHAR"/>
+    <result property="relativesPhone" column="relatives_phone" jdbcType="VARCHAR"/>
+    <result property="relativesPassword" column="relatives_password" jdbcType="VARCHAR"/>
+    <select id="execuStoredprocedure" parameterType="java.util.Map" statementType="CALLABLE">
+        {CALL
+            存储过程名称(
+                    #{param1,mode=IN,jdbcType=VARCHAR},
+                    #{param2,mode=IN,jdbcType=VARCHAR},
+                    #{param3,mode=OUT,jdbcType=INTEGER})
+            }
+    </select>-->
 </mapper>

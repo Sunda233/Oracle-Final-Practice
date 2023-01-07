@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.Random;
@@ -142,7 +143,7 @@ public class IndexController {
      * 注册亲属信息
      * @return
      */
-    @PostMapping(value = {"/insertRelatives"})//发送此两个跳转到登录页
+    @RequestMapping(value = {"/insertRelatives"})//发送此两个跳转到登录页
     public String insert(String relativeName,String relativePassword,String relativePhone,HttpSession session, Model model){
         EspRelativesinfo espRelativesinfo = new EspRelativesinfo();
         espRelativesinfo.setRelativesSerialnumber(suijishu(2));

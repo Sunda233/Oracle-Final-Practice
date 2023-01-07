@@ -25,7 +25,6 @@ public class ChatlogController {
     CaregiverService caregiverService;
     @Autowired
     RelativesService relativesService;
-
     RspMessage rspMessage = new RspMessage();
 
     /**
